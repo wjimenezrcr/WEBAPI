@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script>
+        /*function getData() {
+            var MembersFundsList = [{
+                MembersID: "83",
+                MembersName: "m1",
+                SourceId: "85",
+                SourceName: "s1",
+                Amount: "0.00"
+            },
+            {
+                MembersID: "83",
+                MembersName: "m2",
+                SourceId: "85",
+                SourceName: "s2",
+                Amount: "0.00"
+            }
+            ];*/
+
+        function getData() {
+            var Factura = {
+                CasaMatriz_Sucursal: "001",
+                Terminal_PuntoVenta: "00001",
+                Tipo_Comprobante: "01",
+                Numero_Comprobante: "100",
+                CodigoActividad: "33",
+                Clave: "50624061900310122786900100627010000099749122397308",
+                //NumeroConsecutivo: "00100627010000099749",
+                FechaEmision: "2019-06-24T07:44:00-06:00",
+                Emisor: {
+                    Nombre: "CORREOS DE COSTA RICA S.A",
+                    Tipo_Identificacion: "02",
+                    Numero_Identificacion: "3101227869",
+                    NombreComercial: "CORREOS DE COSTA RICA SOCIEDAD ANONIMA",
+                    Provincia: "1",
+                    Canton: "01",
+                    Distrito: "05",
+                    Barrio: "26",
+                    OtrasSenas: "200 Metros Sur Iglesia Catolica.",
+                    CodigoPaisTel: "506",
+                    NumTelefono: "22022900",
+                    CodigoPaisFax: "506",
+                    NumFax: "22022900",
+                    CorreoElectronico: "facturaelectro@correos.go.cr"
+                },
+                Receptor: {
+                Nombre: "Wagner Jimenez Rodriguez",
+                Tipo_Identificacion: "01",
+                Numero_Identificacion: "205840074",
+                IdentificacionExtranjero: "",
+                NombreComercial: "Wagner Jimenez Rodriguez",
+                Provincia: "2",
+                Canton: "03",
+                Distrito: "01",
+                Barrio: "26",
+                OtrasSenas: "Rincon de Arias 200 mts MasxMenos",
+                OtrasSenas_Extranjero: "",
+                CodigoPaisTel: "506",
+                NumTelefono: "83150122",
+                CodigoPaisFax: "506",
+                NumFax: "83150122",
+                CorreoElectronico: "wjimenezrcr@yahoo.com"
+                },
+                CondicionVenta: "01",
+                PlazoCredito: "0",
+                MedioPago: "02",
+            };
+
+            var TripObject = {
+                //Token: "token1",
+                //TripID: "trip1",
+                Factura: Factura
+            };
+            $.ajax({
+                type: "POST",
+                url: 'http://localhost:51863/api/Factura/ObtenerDatos', //change to your url
+                data: JSON.stringify(TripObject), // pass json object to web api
+                contentType: 'application/json',
+                success: function () {
+                    alert('success!');
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <input type="button" value="GetData" onclick="getData()" />
+</body>
+</html>
