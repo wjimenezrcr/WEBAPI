@@ -28,7 +28,7 @@ namespace WebAPI.Controllers
             }
             else
             {
-                System.Web.HttpContext.Current.Response.Write("prueba");
+                System.Web.HttpContext.Current.Response.Write("hola");
             }
                 
             return jsonResult;
