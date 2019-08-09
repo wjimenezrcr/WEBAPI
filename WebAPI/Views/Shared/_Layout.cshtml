@@ -27,13 +27,15 @@
         function getData() {
             var Factura = {
                 CasaMatriz_Sucursal: "001",
-                Terminal_PuntoVenta: "00001",
+                Terminal_PuntoVenta: "00627",
                 Tipo_Comprobante: "01",
-                Numero_Comprobante: "100",
+                Numero_Comprobante: "99749",
+                Codigo_Pais: "506",
+                Situacion_Comprobante: "1", // 1. Normal, 2. Contingencia, 3. Sin Internet
                 CodigoActividad: "33",
-                Clave: "50624061900310122786900100627010000099749122397308",
+                //Clave: "50624061900310122786900100627010000099749122397308",
                 //NumeroConsecutivo: "00100627010000099749",
-                FechaEmision: "2019-06-24T07:44:00-06:00",
+                FechaEmision: "24/06/2019",
                 Emisor: {
                     Nombre: "CORREOS DE COSTA RICA S.A",
                     Tipo_Identificacion: "02",
@@ -81,10 +83,12 @@
             $.ajax({
                 type: "POST",
                 url: 'http://localhost:51863/api/Factura/ObtenerDatos', //change to your url
+                //url: 'http://172.16.0.159:8085/api/Factura/ObtenerDatos', //change to your url
                 data: JSON.stringify(TripObject), // pass json object to web api
                 contentType: 'application/json',
-                success: function () {
-                    alert('success!');
+                success: function (resultado) {
+                   // debugger;
+                    alert('sucess' + resultado);
                 }
             });
         }

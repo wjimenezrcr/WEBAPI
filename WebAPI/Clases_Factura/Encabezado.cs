@@ -11,6 +11,8 @@ namespace WebAPI.Controllers
         public string Terminal_PuntoVenta { get; set; }
         public string Tipo_Comprobante { get; set; }
         public string Numero_Comprobante { get; set; }
+        public string Codigo_Pais { get; set; }
+        public string Situacion_Comprobante { get; set; }
         public string CodigoActividad { get; set; }
         public string Clave { get; set; }
         public string NumeroConsecutivo { get; set; }

@@ -9,7 +9,7 @@ namespace WebAPI.Controllers
     public class Datos
     {
 
-        public Return CreaNumeroSecuencia(string CasaMatriz, string TerminalPOS, string TipoComprobante, string NumeroFactura)
+        public string CreaNumeroSecuencia(string CasaMatriz, string TerminalPOS, string TipoComprobante, string NumeroFactura)
         {
             // 'CasaMatriz debe de se de tres caracteres m�ximo
             // 'Terminal debe ser máximo 5 cataracteres
@@ -47,19 +47,11 @@ namespace WebAPI.Controllers
                     throw new Exception("Numero de secuencia inválido, debe tener 20 caracteres");
                 }
 
-                Return ValorRetorna = new Return();
-                ValorRetorna.Status = "OK";
-                ValorRetorna.Mensaje = "";
-                ValorRetorna.value = NumeroSecuencia;
-                return ValorRetorna;
+                return NumeroSecuencia;
             }
             catch (Exception ex)
             {
-                Return ValorRetorna = new Return();
-                ValorRetorna.Status = "ERROR";
-                ValorRetorna.Mensaje = ex.Message;
-                ValorRetorna.value = "";
-                return ValorRetorna;
+                throw ex;
             }
 
         }
@@ -110,7 +102,7 @@ namespace WebAPI.Controllers
                     throw new Exception("Situacion Comprobante debe tener un caracter");
                 }
 
-                if ((CodigoSeguridad.Trim().Length > 3))
+                if ((CodigoSeguridad.Trim().Length > 8))
                 {
                     throw new Exception("Código seguridad no debe de superar los 8 caracteres");
                 }
@@ -118,7 +110,7 @@ namespace WebAPI.Controllers
                 string Clave = "";
                 Clave = CodigoPais;
                 Clave = (Clave + Dia.PadLeft(2, '0'));
-                Clave = (Clave + Mes.PadLeft(2, '2'));
+                Clave = (Clave + Mes.PadLeft(2, '0'));
                 Clave = (Clave + Anno.PadLeft(2, '0'));
                 Clave = (Clave + NumeroIdentifiaccion.PadLeft(12, '0'));
                 Clave = (Clave + NumeracionConsecutiva);
